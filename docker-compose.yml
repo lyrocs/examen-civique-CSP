@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # No host port: Coolify's proxy reaches the container over the Docker network.
+    # Publishing 3000 on the host collides with anything else bound to it on the server.
+    expose:
+      - "3000"
+    restart: unless-stopped
